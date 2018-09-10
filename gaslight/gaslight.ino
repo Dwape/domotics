@@ -14,6 +14,7 @@ Note:    This piece of source code is supposed to be used as a demostration ONLY
 #define         RL_VALUE                     (5)     //define the load resistance on the board, in kilo ohms
 #define         RO_CLEAN_AIR_FACTOR          (9.83)  //RO_CLEAR_AIR_FACTOR=(Sensor resistance in clean air)/RO,
                                                      //which is derived from the chart in datasheet
+#define         LIGHT_PIN                    (5)
  
 /***********************Software Related Macros************************************/
 #define         CALIBARAION_SAMPLE_TIMES     (50)    //define how many samples you are going to take in the calibration phase
@@ -57,19 +58,19 @@ void setup()
 }
  
 void loop()
-{
-   Serial.print("LPG:"); 
+{ 
+   //LPG
    Serial.print(MQGetGasPercentage(MQRead(MQ_PIN)/Ro,GAS_LPG) );
-   Serial.print( "ppm" );
-   Serial.print("    ");   
-   Serial.print("CO:"); 
+   Serial.print(";");
+   //CO 
    Serial.print(MQGetGasPercentage(MQRead(MQ_PIN)/Ro,GAS_CO) );
-   Serial.print( "ppm" );
-   Serial.print("    ");   
-   Serial.print("SMOKE:"); 
+   Serial.print(";");
+   //Smoke 
    Serial.print(MQGetGasPercentage(MQRead(MQ_PIN)/Ro,GAS_SMOKE) );
-   Serial.print( "ppm" );
-   Serial.print("\n");
+   Serial.print(";");
+   //Light
+   Serial.print(analogRead(LIGHT_PIN));
+   Serial.print(";");
    delay(200);
 }
  
