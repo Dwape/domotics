@@ -70,7 +70,7 @@ void loop()
    Serial.print(";");
    //Light
    Serial.print(analogRead(LIGHT_PIN));
-   Serial.print(";");
+   Serial.print("\n");
    delay(200);
 }
  
