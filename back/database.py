@@ -19,4 +19,5 @@ cur.execute("SELECT * FROM test")
 for row in cur.fetchall():
     print row[0]
 
+db.commit()
 db.close()
