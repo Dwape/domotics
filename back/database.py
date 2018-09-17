@@ -11,7 +11,8 @@ db = MySQLdb.connect(host="localhost",    # your host, usually localhost
 cur = db.cursor()
 
 # Use all the SQL you like
-cur.execute("INSERT INTO test VALUES ('light', 2)")
+# cur.execute("INSERT INTO test VALUES ('light', 2)")
+cur.execute("INSERT INTO test VALUES (%s, 2)", 'gas')
 cur.execute("SELECT * FROM test")
 
 # print all the first cell of all the rows
