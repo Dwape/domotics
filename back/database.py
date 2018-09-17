@@ -1,6 +1,8 @@
 #!/usr/bin/python
 import MySQLdb
 import datetime
+import humtemp
+import arduinoSerial
 
 db = MySQLdb.connect(host="localhost",    # your host, usually localhost
                      user="root",         # your username
