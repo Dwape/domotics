@@ -12,7 +12,7 @@ cur = db.cursor()
 
 # Use all the SQL you like
 # cur.execute("INSERT INTO test VALUES ('light', 2)")
-cur.execute("INSERT INTO test VALUES (%s, %s)", ('gas', 2))
+cur.execute("INSERT INTO test VALUES (%s, %s)", ('temp', 2))
 cur.execute("SELECT * FROM test")
 
 # print all the first cell of all the rows
