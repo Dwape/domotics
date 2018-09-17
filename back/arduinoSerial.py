@@ -1,10 +1,7 @@
 import serial
 ser = serial.Serial('/dev/ttyUSB0')
 
-ser.write("testing")
-try:
-        while 1:
-                response = ser.readline()
-		print(response)
-except KeyboardInterrupt:
-        ser.close()
+def get_gas_light():
+	"""Returns a list with four values, LPG amount, CO amount, Smoke and light value, in that order."""
+	response = ser.readline()
+	return resonse.split(";")
