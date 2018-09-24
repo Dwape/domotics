@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import NavBar from "../common/Navbar";
+import NavBar from "../common/NavBar";
 import Landing from "./Landing";
-import Footer from "../common/Footer";
 
 class HomeScreen extends Component {
     render() {
@@ -9,7 +8,6 @@ class HomeScreen extends Component {
             <div>
                 <NavBar {...this.props}/>
                 <Landing {...this.props}/>
-                <Footer {...this.props}/>
             </div>
         )
     }
