@@ -45,16 +45,8 @@ float           SmokeCurve[3] ={2.3,0.53,-0.44};    //two points are taken from 
 float           Ro           =  10;                 //Ro is initialized to 10 kilo ohms
  
 void setup()
-{
-  Serial.begin(9600);                               //UART setup, baudrate = 9600bps
-  Serial.print("Calibrating...\n");                
+{                
   Ro = MQCalibration(MQ_PIN);                       //Calibrating the sensor. Please make sure the sensor is in clean air 
-                                                    //when you perform the calibration                    
-  Serial.print("Calibration is done...\n"); 
-  Serial.print("Ro=");
-  Serial.print(Ro);
-  Serial.print("kohm");
-  Serial.print("\n");
 }
  
 void loop()
