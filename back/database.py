@@ -1,8 +1,8 @@
 #!/usr/bin/python
 import MySQLdb
 import datetime
-import humtemp
-import arduinoSerial
+from humtemp import get_humidity_temperature 
+from arduinoSerial import get_gas_light
 
 db = MySQLdb.connect(host="localhost",    # your host, usually localhost
                      user="root",         # your username
