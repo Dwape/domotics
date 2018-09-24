@@ -6,8 +6,10 @@ from arduinoSerial import get_gas_light
 
 cur = None #chech how to initialize the value
 # we can change this so that the save_values method checks to see if there is a cursor and if there isn't is creates one.
+db = None
 
 def connect():
+	global db
 	db = MySQLdb.connect(host="localhost",    # your host, usually localhost
                      user="root",         # your username
                      passwd="tpintrocom",  # your password

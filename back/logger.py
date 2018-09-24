@@ -9,6 +9,7 @@ connect()
 while True:
 	try:
 		values = get_humidity_temperature() + get_gas_light()
+		print(values)
 		save_values(values)
 		time.sleep(30)
 	except RuntimeError:
