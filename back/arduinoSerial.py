@@ -5,4 +5,4 @@ def get_gas_light():
 	"""Returns a list with four values, LPG amount, CO amount, Smoke and light value, in that order."""
 	result = ser.readline()
 	print(result)
-	return result.split(";")[0:5]
+	return result.split(";")[0:4]
