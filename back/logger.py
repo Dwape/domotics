@@ -1,4 +1,4 @@
-import * from database
+from database import *
 import time
 
 #we need to check serial to see if it saves older values or if they are overwritten.
