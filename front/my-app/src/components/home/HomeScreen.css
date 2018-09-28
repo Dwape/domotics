@@ -1,0 +1,8 @@
+div.bg-wrapper {
+  height: 100vh; }
+  div.bg-wrapper .bg-full-screen {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-image: url("../assets/img/shapes-light-blue-bg.jpg"); }
