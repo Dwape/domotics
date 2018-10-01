@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
+	connect()
     return get_latest_values()
 
 if __name__ == "__main__":
