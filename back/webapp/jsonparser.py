@@ -1,5 +1,5 @@
 def parse(values):
-	date = values[0].strftime("%Y-%m-%d %H:%M:%S")
+    date = values[0].strftime("%Y-%m-%d %H:%M:%S")
     json = "{\"datetime\" : " + date + ","
     json = json + "\"humidity\" : " + str(values[1]) + ","
     json = json + "\"temperature\" : " + str(values[2]) + ","
