@@ -10,12 +10,12 @@ def hello():
     values = get_latest_values()[0]
     date = values[0].strftime("%Y-%m-%d %H:%M:%S")
     json = "{\"datetime\" =" + date + ","
-    json = json + "\"humidity\" =" + values[1] + ","
-    json = json + "\"temperature\" =" + values[2] + ","
-    json = json + "\"LPG\" =" + values[3] + ","
-    json = json + "\"CO\" =" + values[4] + ","
-    json = json + "\"smoke\" =" + values[5] + ","
-    json = json + "\"light\" =" + values[6] + "}"
+    json = json + "\"humidity\" =" + str(values[1]) + ","
+    json = json + "\"temperature\" =" + str(values[2]) + ","
+    json = json + "\"LPG\" =" + str(values[3]) + ","
+    json = json + "\"CO\" =" + str(values[4]) + ","
+    json = json + "\"smoke\" =" + str(values[5]) + ","
+    json = json + "\"light\" =" + str(values[6]) + "}"
     return json
 
 if __name__ == "__main__":
