@@ -1,5 +1,6 @@
 from flask import Flask
 from database import get_latest_values
+from database import connect
 
 app = Flask(__name__)
 
