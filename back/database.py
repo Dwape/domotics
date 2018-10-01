@@ -28,3 +28,8 @@ def save_values(values):
 
 def close_connection():
 	db.close()
+
+def get_latest_values():
+	cur.executre("SELECT * FROM data")
+	for row in cur.fetchall():
+    print row
