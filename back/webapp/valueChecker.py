@@ -1,6 +1,8 @@
 from database import *
 # values = humidity, temperature, LPG amount, CO amount, Smoke and light value in an array
-def checkValues(values, tempMax, tempMin, humMin, humMax):
+# weather = humidity, temperature, pressure
+# The user preference variables could be global variables in this file.
+def check_values(values, weather, tempMax, tempMin, humMax, humMin): #it's important to consider that there could be None values due to the readings failing
 	warning = [0,0,0,0,0,0]
 	#humidity
 	if values[0] > humMax or values[0] < humMin :

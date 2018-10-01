@@ -1,24 +1,28 @@
 from flask import Flask
 import requests
+
 from database import get_latest_values
 from database import connect
 from jsonparser import parse
+from weather import get_weather_values
+from valueChecker import check_values
 
 app = Flask(__name__)
 user_temp_max = 28
 user_temp_min = 22
 user_hum_max = 5
 user_hum_min = 50
+city = 'Pilar'
 
 @app.route("/")
 def values():
-
-    stuff = requests.get('http://api.openweathermap.org/data/2.5/weather?q=London').content
-    print stuff
-
     connect()
+    weather = get_weather_values()
     values = get_latest_values()
-    json = parse(values)
+
+    acceptable = check_values(values, weather, user_temp_max, user_temp_min, user_hum_max, user_hum_min)
+
+    json = parse(values, acceptable)
     return json
 
 @app.route("/confTemp", methods=['POST'])
