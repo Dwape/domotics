@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
     connect()
-    values = get_latest_values()
+    values = get_latest_values()[0]
     date = values[0].strftime("%Y-%m-%d %H:%M:%S")
     return date
 

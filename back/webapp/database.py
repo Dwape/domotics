@@ -31,5 +31,4 @@ def close_connection():
 
 def get_latest_values():
 	cur.execute("SELECT * FROM data ORDER BY datetime DESC LIMIT 1")
-	print cur.fetchall()
 	return cur.fetchall()
