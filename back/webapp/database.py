@@ -30,5 +30,5 @@ def close_connection():
 	db.close()
 
 def get_latest_values():
-	cur.executre("SELECT * FROM data")
+	cur.execute("SELECT * FROM data")
 	return cur.fetchall()
