@@ -31,4 +31,5 @@ def close_connection():
 
 def get_latest_values():
 	cur.execute("SELECT * FROM data")
+	print cur.fetchall()
 	return cur.fetchall()
