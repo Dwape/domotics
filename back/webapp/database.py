@@ -30,6 +30,6 @@ def close_connection():
 	db.close()
 
 def get_latest_values():
-	cur.execute("SELECT * FROM data")
+	cur.execute("SELECT * FROM data ORDER BY datatime DESC LIMIT 1")
 	print cur.fetchall()
 	return cur.fetchall()
