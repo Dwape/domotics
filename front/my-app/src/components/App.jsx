@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import './App.css';
+import '../styleSheets/components/App.css';
 import HomeScreen from "./home/HomeScreen";
 
 class App extends Component {
