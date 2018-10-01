@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import NavBar from "../common/NavBar";
 import Landing from "./Landing";
-import './HomeScreen.css';
+import '../../styleSheets/components/home/HomeScreen.css';
 
 class HomeScreen extends Component {
     render() {
