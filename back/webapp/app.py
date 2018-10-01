@@ -1,22 +1,30 @@
 from flask import Flask
 from database import get_latest_values
 from database import connect
+from jsonparser import parse
 
 app = Flask(__name__)
+user_temp_max = 28
+user_temp_min = 22
+user_hum_max = 5
+user_hum_min = 50
 
 @app.route("/")
-def hello():
+def values():
     connect()
     values = get_latest_values()[0]
-    date = values[0].strftime("%Y-%m-%d %H:%M:%S")
-    json = "{\"datetime\" =" + date + ","
-    json = json + "\"humidity\" =" + str(values[1]) + ","
-    json = json + "\"temperature\" =" + str(values[2]) + ","
-    json = json + "\"LPG\" =" + str(values[3]) + ","
-    json = json + "\"CO\" =" + str(values[4]) + ","
-    json = json + "\"smoke\" =" + str(values[5]) + ","
-    json = json + "\"light\" =" + str(values[6]) + "}"
+    json = parse(values)
     return json
+
+@app.route("/confTemp", methods=['POST'])
+def confTemp():
+    if request.method == 'POST':
+        request.get_json()
+
+@app.route("/valuesRange")
+def valuesRange():
+    fromDate = request.args.get('from')
+    toDate = request.args.get('to')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, debug=True)

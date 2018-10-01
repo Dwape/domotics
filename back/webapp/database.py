@@ -32,3 +32,7 @@ def close_connection():
 def get_latest_values():
 	cur.execute("SELECT * FROM data ORDER BY datetime DESC LIMIT 1")
 	return cur.fetchall()
+
+def get_range_values(fromDate, toDate):
+	cur.execute("SELECT * FROM data WHERE (datetime > " + fromDate + " AND datetime < " + toDate + ")")
+	return cur.fetchall()
