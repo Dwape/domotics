@@ -7,7 +7,9 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
     connect()
-    return get_latest_values()
+    values = get_latest_values()
+    date = values[0].strftime("%Y-%m-%d %H:%M:%S")
+    return date
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, debug=True)
