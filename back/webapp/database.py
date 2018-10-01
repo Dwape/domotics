@@ -31,8 +31,9 @@ def close_connection():
 
 def get_latest_values():
 	cur.execute("SELECT * FROM data ORDER BY datetime DESC LIMIT 1")
-	return cur.fetchall()
+	return cur.fetchall()[0]
 
+# We need to check if the date format is correct and if the return value is correct (we may need to remove the last value).
 def get_range_values(fromDate, toDate):
 	cur.execute("SELECT * FROM data WHERE (datetime > " + fromDate + " AND datetime < " + toDate + ")")
 	return cur.fetchall()
