@@ -13,7 +13,7 @@ user_hum_min = 50
 @app.route("/")
 def values():
 
-    stuff = requests.get('hapi.openweathermap.org/data/2.5/weather?q=London').content
+    stuff = requests.get('http://api.openweathermap.org/data/2.5/weather?q=London').content
     print stuff
 
     connect()
