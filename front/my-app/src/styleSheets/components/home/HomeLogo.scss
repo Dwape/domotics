@@ -1,4 +1,17 @@
-home-image {
+div.full-screen-div {
+  height: 85vh;
+  width: 100%;
+}
+
+div.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img.home-image {
   height: 50px;
   width: 50%;
+  display: block;
+  margin: 0 auto;
 }

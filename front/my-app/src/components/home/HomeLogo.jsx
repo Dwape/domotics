@@ -5,7 +5,7 @@ import '../../styleSheets/components/home/HomeLogo.css';
 class HomeLogo extends Component {
     render() {
         return (
-            <div className="text-center">
+            <div className="full-screen-div text-center center-content">
                 <img className="home-image" src={HomeImage}/>
             </div>
         )

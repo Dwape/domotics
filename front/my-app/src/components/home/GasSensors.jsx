@@ -6,7 +6,7 @@ import SmokeSensor from "./SmokeSensor";
 class GasSensors extends Component {
     render() {
         return (
-            <div>
+            <div className="container-fluid">
                 <div className="row">
                     <LPGSensor/>
                 </div>
