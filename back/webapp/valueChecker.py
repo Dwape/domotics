@@ -2,6 +2,8 @@ from database import *
 # values = humidity, temperature, LPG amount, CO amount, Smoke and light value in an array
 # weather = humidity, temperature, pressure
 # The user preference variables could be global variables in this file.
+
+# We could define more values (not only 0 and 1) to say that the value is too low or too high.
 def check_values(values, weather, tempMax, tempMin, humMax, humMin): #it's important to consider that there could be None values due to the readings failing
 	warning = [0,0,0,0,0,0]
 	#humidity

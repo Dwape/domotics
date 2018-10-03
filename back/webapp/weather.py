@@ -5,8 +5,8 @@ def get_weather_values(city):
     json = requests.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&APPID=1e74895185fd2105492ebfba6f9dfb72').json()
     values = json['main']
 
-    pressure = values['pressure']
-    temp = values['temp']
-    humidity = values['humidity']
+    pressure = values['pressure'] #hPa
+    temp = values['temp'] #Celcius
+    humidity = values['humidity'] #%
 
     return [humidity, temp, pressure]
