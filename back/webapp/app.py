@@ -1,6 +1,8 @@
 from flask import Flask
 from flask import request
 from flask import session
+from flask import Response
+from flask_cors import CORS, cross_origin
 import requests
 
 from read_db import get_latest_values
@@ -12,8 +14,14 @@ from valueChecker import check_values
 from read_db import get_range_values
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 city = 'Pilar'
+temp_max = 28
+temp_min = 22
+hum_max = 50
+hum_min = 5
 
 @app.route("/")
 def home():
@@ -24,19 +32,23 @@ def home():
 # The sencond values can either be 0 or 1
 # If the values is 0, then the measurement is within the acceptable range and no changes should be made
 # If the values is 1, then the user should be told to ventilate his house.
-@app.route("/latest")
+@app.route("/api/latest")
 def values():
     #connect()
     weather = get_weather_values(city)
     values = get_latest_values()
 
     # Remove the date from the values as it is not used when comparing values
-    acceptable = check_values(values[1:], weather, session['temp_max'], session['temp_min'], session['hum_max'], session['hum_min'])
+    if 'temp_max' in session:
+        acceptable = check_values(values[1:], weather, session['temp_max'], session['temp_min'], session['hum_max'], session['hum_min'])
+    else :
+        acceptable = check_values(values[1:], weather, temp_max, temp_min, hum_max, hum_min)
 
     json = parseLatest(values, acceptable, weather)
-    return json
+    return Response(json, mimetype='application/json')
+    #return json
 
-@app.route("/changePreferences", methods=['POST'])
+@app.route("/api/changePreferences", methods=['POST'])
 def changePreferences():
     if request.method == 'POST':
         # Check if it gets the json correctly.
@@ -48,21 +60,22 @@ def changePreferences():
         session['hum_min'] = json['hum_min']
         return "New preferences saved successfully"
 
-@app.route("/valuesRange")
+@app.route("/api/valuesRange")
 def valuesRange():
     #connect()
     fromDate = request.args.get('from')
     toDate = request.args.get('to')
     results = get_range_values(fromDate, toDate)
-    return parseList(results)
+    return Response(parseList(results), mimetype='application/json')
+    #return parseList(results)
 
 # We should check if the connect can be done here so that we don't have to connect to the database everytime we wish to request a value.
 if __name__ == "__main__":
     connect() # Check if it works and it makes sense to do this here.
     app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
     #session['city'] = "Pilar"
-    session['temp_max'] = 28
-    session['temp_min'] = 22
-    session['hum_max'] = 50
-    session['hum_min'] = 5
+    #session['temp_max'] = 28
+    #session['temp_min'] = 22
+    #session['hum_max'] = 50
+    #session['hum_min'] = 5
