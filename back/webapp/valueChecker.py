@@ -3,15 +3,18 @@ from database import *
 # weather = humidity, temperature, pressure
 # The user preference variables could be global variables in this file.
 
-# We could define more values (not only 0 and 1) to say that the value is too low or too high.
 def check_values(values, weather, tempMax, tempMin, humMax, humMin): #it's important to consider that there could be None values due to the readings failing
 	warning = [0,0,0,0,0,0]
 	#humidity
-	if values[0] > humMax or values[0] < humMin :
-		warning[0]=1
+	if values[0] > humMax and weather[0] < values[0]:
+		warning[0] = 1
+	elif values[0] < humMin and weather[0] > values[0]:
+		warning[0] = -1
 	#temperature
-	if values[1] > tempMax or values[1] < tempMin:
-		warning[1]=1
+	if values[1] > tempMax and weather[1] < values[1]:
+		warning[1] = 1
+	elif values[1] < tempMin and weather[1] > values[1]:
+		warning[1] = -1
 	#LPG amount
 	if values[2] > 1000:
 		warning[2]=1

@@ -31,15 +31,3 @@ def save_values(values):
 
 def close_connection():
 	db.close()
-
-def get_latest_values():
-	cur.execute("SELECT * FROM data ORDER BY datetime DESC LIMIT 1")
-	return cur.fetchall()[0]
-
-# We need to check if the date format is correct and if the return value is correct (we may need to remove the last value).
-# Check which literal date formats are parsed as dates in sql
-# This is an example that works '2008-11-11 13:23:44'
-# 'YYYY-MM-DD HH:MI:SS'
-def get_range_values(fromDate, toDate):
-	cur.execute("SELECT * FROM data WHERE (datetime > " + fromDate + " AND datetime < " + toDate + ") ORDER BY datetime DESC")
-	return cur.fetchall() # Check if the return value is correct or we need to remove the last value (like we do in get_latest_values())

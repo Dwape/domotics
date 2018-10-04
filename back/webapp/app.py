@@ -3,13 +3,13 @@ from flask import request
 from flask import session
 import requests
 
-from database import get_latest_values
-from database import connect
+from read_db import get_latest_values
+from read_db import connect
 from jsonparser import parseList
 from jsonparser import parseLatest
 from weather import get_weather_values
 from valueChecker import check_values
-from database import get_range_values
+from read_db import get_range_values
 
 app = Flask(__name__)
 
@@ -33,7 +33,7 @@ def values():
     # Remove the date from the values as it is not used when comparing values
     acceptable = check_values(values[1:], weather, session['temp_max'], session['temp_min'], session['hum_max'], session['hum_min'])
 
-    json = parseLatest(values, acceptable)
+    json = parseLatest(values, acceptable, weather)
     return json
 
 @app.route("/changePreferences", methods=['POST'])
