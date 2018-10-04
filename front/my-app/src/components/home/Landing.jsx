@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import VariedSensors from "./VariedSensors";
 import HomeLogo from "./HomeLogo";
 import GasSensors from "./GasSensors";
+import '../../styleSheets/components/home/Sensors.css';
 
 class Landing extends Component {
     render() {
