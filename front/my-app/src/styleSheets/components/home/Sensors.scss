@@ -3,6 +3,7 @@ div.rectangle {
   height: 75px;
   width: 400px;
   border-radius: 200px;
+  border: 3px solid gray;
   background: white;
   position: relative;
   margin-top: 100px;
@@ -30,9 +31,4 @@ img.logo {
 h2.title {
   margin-left: 85px;
   margin-top: 12.5px;
-}
-
-h6.stats {
-  margin-left: 15px;
-  margin-top: 10px;
 }

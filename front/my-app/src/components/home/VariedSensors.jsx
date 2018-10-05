@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TemperatureSensor from "./TemperatureSensor";
 import HumiditySensor from "./HumiditySensor";
-import LightSensor from "./LightSensor";
+import PressureSensor from "./PressureSensor";
 
 class VariedSensors extends Component {
     render() {
@@ -14,7 +14,7 @@ class VariedSensors extends Component {
                     <HumiditySensor interior={this.props.hum_int} exterior={this.props.hum_ext}/>
                 </div>
                 <div className="row">
-                    <LightSensor interior={this.props.light}/>
+                    <PressureSensor exterior={this.props.pressure_ext}/>
                 </div>
             </div>
         )

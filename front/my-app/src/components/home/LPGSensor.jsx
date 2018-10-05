@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import LPGLogo from "../assets/icons/temperature-icon.svg";
+import LPGLogo from "../assets/icons/lpg-icon.svg";
 
 class LPGSensor extends Component {
     render() {

@@ -23,7 +23,7 @@ class Landing extends Component {
                             temp_ext={this.state.response["current_temp"]}
                             hum_int={this.state.response["humidity"][0]}
                             hum_ext={this.state.response["current_hum"]}
-                            light={this.state.response["light"][0]}
+                            pressure_ext={this.state.response["pressure"]}
                         />
                     </div>
                     <div className="col-2">

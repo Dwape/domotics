@@ -14,6 +14,13 @@ class App extends Component {
             </BrowserRouter>
         )
     }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            response: ''
+        };
+    }
 }
 
 export default App;

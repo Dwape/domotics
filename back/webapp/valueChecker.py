@@ -1,4 +1,4 @@
-from database import *
+from read_db import *
 # values = humidity, temperature, LPG amount, CO amount, Smoke and light value in an array
 # weather = humidity, temperature, pressure
 # The user preference variables could be global variables in this file.
