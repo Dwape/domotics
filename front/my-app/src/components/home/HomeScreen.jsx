@@ -4,6 +4,7 @@ import Landing from "./Landing";
 import '../../styleSheets/components/home/HomeScreen.css';
 
 class HomeScreen extends Component {
+
     render() {
         return (
             <div className="bg-wrapper">

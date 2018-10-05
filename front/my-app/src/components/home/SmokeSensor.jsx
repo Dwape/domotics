@@ -10,7 +10,7 @@ class SmokeSensor extends Component {
                         <img className="logo" src={SmokeLogo}/>
                     </div>
                     <h2 className="title float-left">Smoke</h2>
-                    <h6 className="stats float-left">Interior: 9</h6>
+                    <h6 className="stats float-left">Interior: {this.props.interior} ppm</h6>
                     <h6 className="stats float-left">Exterior: 14</h6>
                 </div>
             </div>

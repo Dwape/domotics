@@ -8,11 +8,20 @@ from arduinoSerial import get_gas_light
 
 connect()
 
+previous_values = None
+
 while True:
 	try:
 		values = get_humidity_temperature() + get_gas_light()
-		print(values)
-		save_values(values)
+		if values[0] == None or values[1] == None:
+			if previous_values != None:
+				values[0] = previous_values[0]
+				values[1] = previous_values[1]
+				save_values(values)
+				previous_values = values
+		else:
+			previous_values = values
+			save_values(values)
 		time.sleep(30)
 	except RuntimeError:
 		close_connection()

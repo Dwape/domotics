@@ -8,13 +8,13 @@ class VariedSensors extends Component {
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <TemperatureSensor/>
+                    <TemperatureSensor interior={this.props.temp_int} exterior={this.props.temp_ext}/>
                 </div>
                 <div className="row">
-                    <HumiditySensor/>
+                    <HumiditySensor interior={this.props.hum_int} exterior={this.props.hum_ext}/>
                 </div>
                 <div className="row">
-                    <LightSensor/>
+                    <LightSensor interior={this.props.light}/>
                 </div>
             </div>
         )
