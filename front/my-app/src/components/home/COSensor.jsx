@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import COLogo from "../assets/icons/temperature-icon.svg";
+import COLogo from "../assets/icons/co-icon.svg";
 
 class COSensor extends Component {
     render() {
@@ -10,8 +10,8 @@ class COSensor extends Component {
                         <img className="logo" src={COLogo}/>
                     </div>
                     <h2 className="title float-left">CO</h2>
-                    <h6 className="stats float-left">Interior: 9</h6>
-                    <h6 className="stats float-left">Exterior: 14</h6>
+                    <h6 className="float-left"
+                        style={{"padding-left": "150px", "margin-lef": "25px", "margin-top": "22.5px"}}>Interior: 9</h6>
                 </div>
             </div>
         )

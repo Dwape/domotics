@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import LPGLogo from "../assets/icons/temperature-icon.svg";
+import LPGLogo from "../assets/icons/lpg-icon.svg";
 
 class LPGSensor extends Component {
     render() {
@@ -10,8 +10,8 @@ class LPGSensor extends Component {
                         <img className="logo" src={LPGLogo}/>
                     </div>
                     <h2 className="title float-left">LPG</h2>
-                    <h6 className="stats float-left">Interior: 9</h6>
-                    <h6 className="stats float-left">Exterior: 14</h6>
+                    <h6 className="float-left"
+                        style={{"padding-left": "140px", "margin-lef": "25px", "margin-top": "22.5px"}}>Interior: 9</h6>
                 </div>
             </div>
         )

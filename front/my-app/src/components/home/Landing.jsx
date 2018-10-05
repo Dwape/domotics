@@ -5,6 +5,12 @@ import GasSensors from "./GasSensors";
 import '../../styleSheets/components/home/Sensors.css';
 
 class Landing extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
     render() {
         return (
             <div className="container-fluid">

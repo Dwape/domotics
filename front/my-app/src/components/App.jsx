@@ -5,23 +5,16 @@ import HomeScreen from "./home/HomeScreen";
 
 class App extends Component {
 
-    state = {
-        response: ''
-    };
-
-    render() {
-        return (
-            <BrowserRouter>
-                <Switch>
-                    <Route path="/" exact component={HomeScreen}/>
-                </Switch>
-            </BrowserRouter>
-        )
+    constructor(props) {
+        super(props);
+        this.state = {
+            response: ''
+        };
     }
 
     componentDidMount() {
         this.callApi()
-            .then(res => this.setState({ response: res.express }))
+            .then(res => this.setState({response: res.express}))
             .catch(err => console.log(err));
     }
 
@@ -34,6 +27,16 @@ class App extends Component {
 
         return body;
     };
+
+    render() {
+        return (
+            <BrowserRouter>
+                <Switch>
+                    <Route path="/" exact component={HomeScreen}/>
+                </Switch>
+            </BrowserRouter>
+        )
+    }
 }
 
 export default App;

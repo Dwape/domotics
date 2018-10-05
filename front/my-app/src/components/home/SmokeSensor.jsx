@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SmokeLogo from "../assets/icons/temperature-icon.svg";
+import SmokeLogo from "../assets/icons/smoke-icon.svg";
 
 class SmokeSensor extends Component {
     render() {
@@ -9,9 +9,9 @@ class SmokeSensor extends Component {
                     <div className="circle">
                         <img className="logo" src={SmokeLogo}/>
                     </div>
-                    <h2 className="title float-left">Smoke</h2>
-                    <h6 className="stats float-left">Interior: 9</h6>
-                    <h6 className="stats float-left">Exterior: 14</h6>
+                    <h2 className="title float-left">Humo</h2>
+                    <h6 className="float-left"
+                        style={{"padding-left": "115px", "margin-lef": "25px", "margin-top": "22.5px"}}>Interior: 9</h6>
                 </div>
             </div>
         )

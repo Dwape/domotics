@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TemperatureSensor from "./TemperatureSensor";
 import HumiditySensor from "./HumiditySensor";
-import LightSensor from "./LightSensor";
+import LightSensor from "./PressureSensor";
 
 class VariedSensors extends Component {
     render() {
@@ -10,10 +10,10 @@ class VariedSensors extends Component {
                 <div className="row">
                     <TemperatureSensor/>
                 </div>
-                <div className="row">
+                <div className="row" style={{"margin-left": "35px"}}>
                     <HumiditySensor/>
                 </div>
-                <div className="row">
+                <div className="row" style={{"margin-left": "70px"}}>
                     <LightSensor/>
                 </div>
             </div>
