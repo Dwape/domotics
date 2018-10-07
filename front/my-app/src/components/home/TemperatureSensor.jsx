@@ -11,10 +11,10 @@ class TemperatureSensor extends Component {
                         <img className="logo" src={TemperatureLogo}/>
                     </div>
                     <h2 className="title float-left">Temperatura</h2>
-                    <h6 className="float-left" style={{"margin-left": "12.5px", "margin-top": "7.5px"}}>
+                    <h6 className="float-left" style={{"margin-left": "2.5px", "margin-top": "7.5px"}}>
                         Interior: {this.props.interior} ºC
                     </h6>
-                    <h6 className="float-left" style={{"margin-left": "12.5px", "margin-top": "7.5px"}}>
+                    <h6 className="float-left" style={{"margin-left": "2.5px", "margin-top": "7.5px"}}>
                         Exterior: {this.props.exterior} ºC
                     </h6>
                 </div>

@@ -17,14 +17,14 @@ class Landing extends Component {
     //     super(props);
     //     this.state = {
     //         response: {
-    //             "temperature": "15",
-    //             "current_temp": "17",
-    //             "humidity": "42",
-    //             "current_hum": "45",
-    //             "pressure": "12",
-    //             "LPG": "4",
-    //             "CO": "5",
-    //             "smoke": "6"
+    //             "temperature": "15.43",
+    //             "current_temp": "24.59",
+    //             "humidity": "42.22",
+    //             "current_hum": "45.09",
+    //             "pressure": "12.34",
+    //             "LPG": "41.33",
+    //             "CO": "51.44",
+    //             "smoke": "66.43"
     //         }
     //     };
     // }

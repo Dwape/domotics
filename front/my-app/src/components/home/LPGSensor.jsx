@@ -10,7 +10,7 @@ class LPGSensor extends Component {
                         <img className="logo" src={LPGLogo}/>
                     </div>
                     <h2 className="title float-left">LPG</h2>
-                    <h6 className="stats float-left" style={{"margin-left": "115px", "margin-top": "22.5px"}}>
+                    <h6 className="stats float-left" style={{"margin-left": "95px", "margin-top": "22.5px"}}>
                         Interior: {this.props.interior} ppm
                     </h6>
                 </div>

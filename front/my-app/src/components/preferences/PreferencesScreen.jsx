@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import NavBar from "../common/NavBar";
 import '../../styleSheets/components/home/HomeScreen.css';
-import Form from "./Form"
+import Form from "./Form";
 
 class PreferencesScreen extends Component {
 

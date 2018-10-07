@@ -11,6 +11,14 @@ class Form extends Component {
             min_hum: undefined
         };
 
+        // super(props);
+        // this.state = {
+        //     max_temp: 40,
+        //     min_temp: 5,
+        //     max_hum: 90,
+        //     min_hum: 20
+        // };
+
         this.handleMaxTempChange = this.handleMaxTempChange.bind(this);
         this.handleMinTempChange = this.handleMinTempChange.bind(this);
         this.handleMaxHumChange = this.handleMaxHumChange.bind(this);
@@ -18,6 +26,52 @@ class Form extends Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    componentDidMount() {
+        this.callApi()
+            .then(res => this.setState({
+                max_temp: res["temp_max"],
+                min_temp: res["temp_min"],
+                max_hum: res["hum_max"],
+                min_hum: res["hum_min"]
+            }))
+            .catch(err => console.log(err));
+    }
+
+    callApi = async () => {
+        const response = await fetch('http://' + process.env.REACT_APP_ARG + ':5000/api/getPreferences', {
+            credentials: 'include'
+        }); //the ip will change all the time
+
+        const body = await response.json();
+
+        if (response.status !== 200) throw Error(body.message);
+
+        return body;
+    };
+
+    saveValues = async () => {
+        const response = await fetch('http://' + process.env.REACT_APP_ARG + ':5000/api/changePreferences', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                temp_max: this.state.max_temp,
+                temp_min: this.state.min_temp,
+                hum_max: this.state.max_hum,
+                hum_min: this.state.min_hum,
+            })
+        });
+
+        const body = await response.json();
+
+        if (response.status !== 200) throw Error(body.message);
+
+        return body;
+    };
 
     handleMaxTempChange(event) {
         this.setState({max_temp: event.target.value});
@@ -49,7 +103,7 @@ class Form extends Component {
     }
 
     render() {
-        if(this.state.max_temp === undefined) {
+        if (this.state.max_temp === undefined) {
             return 'Loading...'
         }
         return (
@@ -59,77 +113,35 @@ class Form extends Component {
                         <h5 className="form-centered  form-title">Change preferences</h5>
                         <label className="form-text">
                             Temperatura Máxima:
-                            <input className="form-box" type="text" value={this.state.max_temp} onChange={this.handleMaxTempChange} />
+                            <input className="form-box" type="text" value={this.state.max_temp}
+                                   onChange={this.handleMaxTempChange}/>
                             ºC
                         </label>
                         <label className="form-text">
-                            Temperatura Minima:
-                            <input className="form-box" type="text" value={this.state.min_temp} onChange={this.handleMinTempChange} />
+                            Temperatura Mínima:
+                            <input className="form-box" type="text" value={this.state.min_temp}
+                                   onChange={this.handleMinTempChange}/>
                             ºC
                         </label>
                         <label className="form-text">
                             Humedad Máxima:
-                            <input className="form-box" type="text" value={this.state.max_hum} onChange={this.handleMaxHumChange} />
+                            <input className="form-box" type="text" value={this.state.max_hum}
+                                   onChange={this.handleMaxHumChange}/>
                             %
                         </label>
                         <label className="form-text">
-                            Humedad Minima:
-                            <input className="form-box" type="text" value={this.state.min_hum} onChange={this.handleMinHumChange} />
+                            Humedad Mínima:
+                            <input className="form-box" type="text" value={this.state.min_hum}
+                                   onChange={this.handleMinHumChange}/>
                             %
                         </label>
                         <div className="form-centered">
-                            <input className="form-button" type="submit" value="Submit" />
+                            <input className="form-button" type="submit" value="Submit"/>
                         </div>
                     </form>
                 </div>
             </div>
         );
-    }
-
-    componentDidMount() {
-        this.callApi()
-            .then(res => this.setState({
-                max_temp: res["temp_max"],
-                min_temp: res["temp_min"],
-                max_hum: res["hum_max"],
-                min_hum: res["hum_min"]
-            }))
-            .catch(err => console.log(err));
-    }
-
-    callApi = async () => {
-        const response = await fetch('http://'+ process.env.REACT_APP_ARG +':5000/api/getPreferences', {
-            credentials: 'include'
-        }); //the ip will change all the time
-
-        const body = await response.json();
-
-        if (response.status !== 200) throw Error(body.message);
-
-        return body;
-    };
-
-    saveValues = async () => {
-        const response = await fetch('http://'+ process.env.REACT_APP_ARG +':5000/api/changePreferences', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                temp_max: this.state.max_temp,
-                temp_min: this.state.min_temp,
-                hum_max: this.state.max_hum,
-                hum_min: this.state.min_hum,
-            })
-        });
-
-        const body = await response.json();
-
-        if (response.status !== 200) throw Error(body.message);
-
-        return body;
     }
 }
 
