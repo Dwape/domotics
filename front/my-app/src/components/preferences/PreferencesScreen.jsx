@@ -15,10 +15,14 @@ class PreferencesScreen extends Component {
             <div className="bg-wrapper">
                 <div className="bg-full-screen">
                     <NavBar {...this.props}/>
-                    <Form/>
+                    <Form screen={this}/>
                 </div>
             </div>
         )
+    }
+
+    displayMessage() {
+        alert("Changes saved successfully!");
     }
 }
 

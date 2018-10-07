@@ -33,6 +33,17 @@ class Landing extends Component {
         this.callApi()
             .then(res => this.setState({response: res}))
             .catch(err => console.log(err));
+
+        this.interval = setInterval(() => this.callApi()
+            .then(res => this.setState({response: res}))
+            .catch(err => console.log(err)), 30000);
+        //this.callApi()
+        //    .then(res => this.setState({response: res}))
+        //    .catch(err => console.log(err));
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     callApi = async () => {

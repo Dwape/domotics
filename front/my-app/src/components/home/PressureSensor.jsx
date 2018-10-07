@@ -11,7 +11,7 @@ class PressureSensor extends Component {
                     </div>
                     <h2 className="title float-left">Presión</h2>
                     <h6 className="float-left" style={{"margin-left": "60px", "margin-top": "22.5px"}}>
-                        Exterior: {this.props.exterior}
+                        Exterior: {this.props.exterior} hPa
                     </h6>
                 </div>
             </div>

@@ -70,6 +70,8 @@ class Form extends Component {
 
         if (response.status !== 200) throw Error(body.message);
 
+        this.props.screen.displayMessage();
+
         return body;
     };
 
@@ -136,7 +138,7 @@ class Form extends Component {
                             %
                         </label>
                         <div className="form-centered">
-                            <input className="form-button" type="submit" value="Submit"/>
+                            <input className="form-button btn btn-dark" type="submit" value="Submit"/>
                         </div>
                     </form>
                 </div>
