@@ -4,7 +4,7 @@ class NavBar extends Component {
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-                <a className="navbar-brand text-white" href="#">Domotics</a>
+                <a className="navbar-brand text-white" href="/">Domotics</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -12,9 +12,9 @@ class NavBar extends Component {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <a className="nav-item nav-link text-white" href="#">Home <span
+                        <a className="nav-item nav-link text-white" href="/">Home <span
                             className="sr-only">(current)</span></a>
-                        <a className="nav-item nav-link text-muted" href="#">Set parameters</a>
+                        <a className="nav-item nav-link text-muted" href="/changePreferences">Set parameters</a>
                         <a className="nav-item nav-link text-muted" href="#">Check parameters</a>
                         <a className="nav-item nav-link text-muted" href="#">About</a>
                     </div>

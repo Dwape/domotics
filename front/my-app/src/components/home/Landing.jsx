@@ -48,7 +48,10 @@ class Landing extends Component {
     }
 
     callApi = async () => {
-        const response = await fetch('http://localhost:5000/api/latest');
+        //const response = await fetch('http://localhost:5000/api/latest');
+        const response = await fetch('http://localhost:5000/api/latest', {
+            credentials: 'include'
+        }); //the ip will change all the time
 
         const body = await response.json();
 

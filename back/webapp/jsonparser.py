@@ -37,3 +37,11 @@ def parseLatest(values, acceptable, weather):
     json = json + "\"current_temp\" : " + str(weather[1]) + ","
     json = json + "\"pressure\" : " + str(weather[2]) + "}"
     return json
+
+def parsePreferences(temp_max, temp_min, hum_max, hum_min):
+    json = '{'
+    json = json + '"temp_max": ' + str(temp_max) + ','
+    json = json + '"temp_min": ' + str(temp_min) + ','
+    json = json + '"hum_max": ' + str(hum_max) + ','
+    json = json + '"hum_min": ' + str(hum_min) + '}'
+    return json
