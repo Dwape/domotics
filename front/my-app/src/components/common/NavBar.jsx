@@ -14,8 +14,7 @@ class NavBar extends Component {
                     <div className="navbar-nav">
                         <a className="nav-item nav-link text-white" href="/">Home <span
                             className="sr-only">(current)</span></a>
-                        <a className="nav-item nav-link text-muted" href="/changePreferences">Set parameters</a>
-                        <a className="nav-item nav-link text-muted" href="#">Check parameters</a>
+                        <a className="nav-item nav-link text-muted" href="/changePreferences">Change preferences</a>
                         <a className="nav-item nav-link text-muted" href="#">About</a>
                     </div>
                 </div>

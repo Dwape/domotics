@@ -1,0 +1,32 @@
+div.form-container {
+  display: block;
+  height: 270px;
+  width: 400px;
+  border-radius: 30px;
+  border: 3px solid gray;
+  background: white;
+  position: relative;
+  margin-top: 100px;
+  margin-left: 20px; }
+
+.form-text {
+  margin-left: 20px; }
+
+.form-box {
+  margin-left: 10px;
+  /* float: right; */
+  /* margin-right: 20px; */
+  width: 100px; }
+
+.form-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.form-title {
+  margin-top: 15px;
+  margin-bottom: 15px; }
+
+.form-button {
+  text-align: center;
+  margin-top: 15px; }
