@@ -12,8 +12,9 @@ class SmokeSensor extends Component {
 
                     <h2 className="title float-left">Smoke</h2>
                     <div className="flex-column">
-                        <h6 className="stats float-left">Interior: {this.props.interior} ppm</h6>
-                        <h6 className="stats float-left">Exterior: 14</h6>
+                        <h6 className="stats float-left" style={{"margin-left": "80px", "margin-top": "22.5px"}}>
+                            Interior: {this.props.interior} ppm
+                        </h6>
                     </div>
 
                 </div>

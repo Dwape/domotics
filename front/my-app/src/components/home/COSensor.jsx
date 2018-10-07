@@ -10,7 +10,9 @@ class COSensor extends Component {
                         <img className="logo" src={COLogo}/>
                     </div>
                     <h2 className="title float-left">CO</h2>
-                    <h6 className="float-left">Interior: {this.props.interior} ppm</h6>
+                    <h6 className="float-left" style={{"margin-left": "130px", "margin-top": "22.5px"}}>
+                        Interior: {this.props.interior} ppm
+                    </h6>
                 </div>
             </div>
         )

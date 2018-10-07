@@ -4,12 +4,6 @@ import Landing from "./Landing";
 import '../../styleSheets/components/home/HomeScreen.css';
 
 class HomeScreen extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
     render() {
         return (
             <div className="bg-wrapper">

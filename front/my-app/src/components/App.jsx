@@ -5,7 +5,6 @@ import HomeScreen from "./home/HomeScreen";
 import PreferencesScreen from "./preferences/PreferencesScreen";
 
 class App extends Component {
-
     render() {
         return (
             <BrowserRouter>
@@ -15,13 +14,6 @@ class App extends Component {
                 </Switch>
             </BrowserRouter>
         )
-    }
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            response: ''
-        };
     }
 }
 

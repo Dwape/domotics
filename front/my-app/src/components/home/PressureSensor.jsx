@@ -10,8 +10,9 @@ class PressureSensor extends Component {
                         <img className="logo" src={PressureLogo}/>
                     </div>
                     <h2 className="title float-left">Presión</h2>
-                    <h6 className="float-left">Interior: No-Sensor</h6>
-                    <h6 className="float-left">Exterior: {this.props.exterior}</h6>
+                    <h6 className="float-left" style={{"margin-left": "95px", "margin-top": "22.5px"}}>
+                        Exterior: {this.props.exterior}
+                    </h6>
                 </div>
             </div>
         )

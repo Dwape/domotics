@@ -10,10 +10,10 @@ class VariedSensors extends Component {
                 <div className="row">
                     <TemperatureSensor interior={this.props.temp_int} exterior={this.props.temp_ext}/>
                 </div>
-                <div className="row">
+                <div className="row" style={{"margin-left": "35px"}}>
                     <HumiditySensor interior={this.props.hum_int} exterior={this.props.hum_ext}/>
                 </div>
-                <div className="row">
+                <div className="row" style={{"margin-left": "70px"}}>
                     <PressureSensor exterior={this.props.pressure_ext}/>
                 </div>
             </div>

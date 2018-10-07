@@ -6,12 +6,50 @@ import '../../styleSheets/components/home/Sensors.css';
 
 class Landing extends Component {
 
-    state = {
-        response: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            response: ''
+        }
+    }
+
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         response: {
+    //             "temperature": "15",
+    //             "current_temp": "17",
+    //             "humidity": "42",
+    //             "current_hum": "45",
+    //             "pressure": "12",
+    //             "LPG": "4",
+    //             "CO": "5",
+    //             "smoke": "6"
+    //         }
+    //     };
+    // }
+
+    componentDidMount() {
+        this.callApi()
+            .then(res => this.setState({response: res}))
+            .catch(err => console.log(err));
+    }
+
+    callApi = async () => {
+        //const response = await fetch('http://localhost:5000/api/latest');
+        const response = await fetch('http://' + process.env.REACT_APP_ARG + ':5000/api/latest', {
+            credentials: 'include'
+        }); //the ip will change all the time
+
+        const body = await response.json();
+
+        if (response.status !== 200) throw Error(body.message);
+
+        return body;
     };
 
     render() {
-        if(this.state.response === '') {
+        if (this.state.response === '') {
             return 'Loading...' //We could add some nice image when it is loading (although it should take very little time)
         }
         return (
@@ -40,25 +78,6 @@ class Landing extends Component {
             </div>
         )
     }
-
-    componentDidMount() {
-        this.callApi()
-            .then(res => this.setState({ response: res }))
-            .catch(err => console.log(err));
-    }
-
-    callApi = async () => {
-        //const response = await fetch('http://localhost:5000/api/latest');
-        const response = await fetch('http://'+ process.env.REACT_APP_ARG +':5000/api/latest', {
-            credentials: 'include'
-        }); //the ip will change all the time
-
-        const body = await response.json();
-
-        if (response.status !== 200) throw Error(body.message);
-
-        return body;
-    };
 }
 
 export default Landing;
