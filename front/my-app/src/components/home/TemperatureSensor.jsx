@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import TemperatureLogo from "../assets/icons/temperature-icon.svg";
 
 class TemperatureSensor extends Component {
-
     render() {
         return (
             <div className="container-fluid">
-                <div className="row rectangle" id="temperature-alert">
-                    <div className="circle" id="temperature-alert">
+                <div
+                    className={(this.props.isOk(this.props.interior, this.props.min, this.props.max) ? "" : "blink") + " row rectangle"}>
+                    <div className="circle">
                         <img className="logo" src={TemperatureLogo}/>
                     </div>
                     <h2 className="title float-left">Temperatura</h2>

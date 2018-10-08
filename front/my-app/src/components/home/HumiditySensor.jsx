@@ -5,7 +5,8 @@ class HumiditySensor extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <div className="row rectangle">
+                <div
+                    className={(this.props.isOk(this.props.interior, this.props.min, this.props.max) ? "" : "blink") + " row rectangle"}>
                     <div className="circle">
                         <img className="logo" src={HumidityLogo}/>
                     </div>

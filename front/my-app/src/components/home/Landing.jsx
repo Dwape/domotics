@@ -9,7 +9,8 @@ class Landing extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            response: ''
+            response: '',
+            preferences: ''
         }
     }
 
@@ -25,28 +26,41 @@ class Landing extends Component {
     //             "LPG": "41.33",
     //             "CO": "51.44",
     //             "smoke": "66.43"
+    //         },
+    //         preferences: {
+    //             "temp_max": "40.44",
+    //             "temp_min": "5.67",
+    //             "hum_max": "95.86",
+    //             "hum_min": "20.03"
     //         }
     //     };
     // }
 
     componentDidMount() {
-        this.callApi()
+        // Response (stats)
+        this.callResponseApi()
             .then(res => this.setState({response: res}))
-            .catch(err => console.log(err));
+            .catch(err => console.error(err));
 
-        this.interval = setInterval(() => this.callApi()
+        this.interval = setInterval(() => this.callResponseApi()
             .then(res => this.setState({response: res}))
-            .catch(err => console.log(err)), 30000);
-        //this.callApi()
-        //    .then(res => this.setState({response: res}))
-        //    .catch(err => console.log(err));
+            .catch(err => console.error(err)), 30000);
+
+        // Preferences
+        this.callPreferencesApi()
+            .then(pref => this.setState({preferences: pref}))
+            .catch(err => console.error(err));
+
+        this.interval = setInterval(() => this.callPreferencesApi()
+            .then(pref => this.setState({preferences: pref}))
+            .catch(err => console.error(err)), 30000);
     }
 
     componentWillUnmount() {
         clearInterval(this.interval);
     }
 
-    callApi = async () => {
+    callResponseApi = async () => {
         //const response = await fetch('http://localhost:5000/api/latest');
         const response = await fetch('http://' + process.env.REACT_APP_ARG + ':5000/api/latest', {
             credentials: 'include'
@@ -56,6 +70,15 @@ class Landing extends Component {
 
         if (response.status !== 200) throw Error(body.message);
 
+        return body;
+    };
+
+    callPreferencesApi = async () => {
+        const preferences = await fetch('http://' + process.env.REACT_APP_ARG + ':5000/api/getPreferences', {
+            credentials: 'include'
+        });
+        const body = await preferences.json();
+        if (preferences.status !== 200) throw Error(body.message);
         return body;
     };
 
@@ -73,6 +96,10 @@ class Landing extends Component {
                             hum_int={this.state.response["humidity"][0]}
                             hum_ext={this.state.response["current_hum"]}
                             pressure_ext={this.state.response["pressure"]}
+                            tempMax={this.state.preferences["temp_max"]}
+                            tempMin={this.state.preferences["temp_min"]}
+                            humMax={this.state.preferences["hum_max"]}
+                            humMin={this.state.preferences["hum_min"]}
                         />
                     </div>
                     <div className="col-2">

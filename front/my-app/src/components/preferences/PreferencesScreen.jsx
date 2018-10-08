@@ -5,24 +5,21 @@ import Form from "./Form";
 
 class PreferencesScreen extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {};
+    static displayTheMessage() {
+        alert("Changes saved successfully!");
     }
+
+    displayTheMessageRef = PreferencesScreen.displayTheMessage.bind(this);
 
     render() {
         return (
             <div className="bg-wrapper">
                 <div className="bg-full-screen">
                     <NavBar {...this.props}/>
-                    <Form screen={this}/>
+                    <Form displayMessage={this.displayTheMessageRef}/>
                 </div>
             </div>
         )
-    }
-
-    displayMessage() {
-        alert("Changes saved successfully!");
     }
 }
 

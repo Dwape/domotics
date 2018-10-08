@@ -28,3 +28,13 @@ img.logo {
 h2.title {
   margin-left: 85px;
   margin-top: 12.5px; }
+
+div.blink {
+  background: red !important;
+  animation: blink 1.5s linear infinite; }
+
+@keyframes blink {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }

@@ -11,14 +11,6 @@ class Form extends Component {
             min_hum: undefined
         };
 
-        // super(props);
-        // this.state = {
-        //     max_temp: 40,
-        //     min_temp: 5,
-        //     max_hum: 90,
-        //     min_hum: 20
-        // };
-
         this.handleMaxTempChange = this.handleMaxTempChange.bind(this);
         this.handleMinTempChange = this.handleMinTempChange.bind(this);
         this.handleMaxHumChange = this.handleMaxHumChange.bind(this);
@@ -70,7 +62,7 @@ class Form extends Component {
 
         if (response.status !== 200) throw Error(body.message);
 
-        this.props.screen.displayMessage();
+        this.props.displayTheMessageRef();
 
         return body;
     };
