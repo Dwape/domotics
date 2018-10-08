@@ -21,10 +21,10 @@ cors = CORS(app, supports_credentials=True) #May need to remove the supports_cre
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 city = 'Pilar'
-temp_max = 28
-temp_min = 22
-hum_max = 50
-hum_min = 5
+temp_max = float(28.0)
+temp_min = float(22.0)
+hum_max = float(50.0)
+hum_min = float(5.0)
 
 @app.route("/")
 def home():
@@ -92,8 +92,8 @@ if __name__ == "__main__":
     app.secret_key = 'key'
     app.run(host='0.0.0.0', port=5000, debug=True)
     #session['city'] = "Pilar"
-    session['temp_max'] = 28
-    session['temp_min'] = 22
-    session['hum_max'] = 50
-    session['hum_min'] = 5
+    session['temp_max'] = float(28.0)
+    session['temp_min'] = float(22.0)
+    session['hum_max'] = float(50.0)
+    session['hum_min'] = float(5.0)
     #session.modified = True
