@@ -23,6 +23,7 @@ def close_connection():
 	db.close()
 
 def get_latest_values():
+	connect()
 	cur = db.cursor()
 	cur.execute("SELECT * FROM data ORDER BY datetime DESC LIMIT 1")
 	return cur.fetchall()[0]
@@ -32,6 +33,7 @@ def get_latest_values():
 # This is an example that works '2008-11-11 13:23:44'
 # 'YYYY-MM-DD HH:MI:SS'
 def get_range_values(fromDate, toDate):
+	connect()
 	cur = db.cursor()
 	cur.execute("SELECT * FROM data WHERE (datetime > " + fromDate + " AND datetime < " + toDate + ") ORDER BY datetime DESC")
 	return cur.fetchall() # Check if the return value is correct or we need to remove the last value (like we do in get_latest_values())
