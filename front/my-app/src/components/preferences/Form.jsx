@@ -62,7 +62,7 @@ class Form extends Component {
 
         if (response.status !== 200) throw Error(body.message);
 
-        this.props.displayTheMessageRef();
+        this.props.screen.displayMessage();
 
         return body;
     };
@@ -106,25 +106,25 @@ class Form extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <h5 className="form-centered  form-title">Change preferences</h5>
                         <label className="form-text">
-                            Temperatura Máxima:
+                            Maximum Temperature:
                             <input className="form-box" type="text" value={this.state.max_temp}
                                    onChange={this.handleMaxTempChange}/>
                             ºC
                         </label>
                         <label className="form-text">
-                            Temperatura Mínima:
+                            Minimum Temperature:
                             <input className="form-box" type="text" value={this.state.min_temp}
                                    onChange={this.handleMinTempChange}/>
                             ºC
                         </label>
                         <label className="form-text">
-                            Humedad Máxima:
+                            Maximum Humidity:
                             <input className="form-box" type="text" value={this.state.max_hum}
                                    onChange={this.handleMaxHumChange}/>
                             %
                         </label>
                         <label className="form-text">
-                            Humedad Mínima:
+                            Minimum Humidity:
                             <input className="form-box" type="text" value={this.state.min_hum}
                                    onChange={this.handleMinHumChange}/>
                             %

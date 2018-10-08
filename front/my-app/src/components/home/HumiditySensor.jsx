@@ -6,11 +6,11 @@ class HumiditySensor extends Component {
         return (
             <div className="container-fluid">
                 <div
-                    className={(this.props.isOk(this.props.interior, this.props.min, this.props.max) ? "" : "blink") + " row rectangle"}>
+                    className={(this.props.acceptable ? "" : "blink") + " row rectangle"}>
                     <div className="circle">
                         <img className="logo" src={HumidityLogo}/>
                     </div>
-                    <h2 className="title float-left">Humedad</h2>
+                    <h2 className="title float-left">Humidity</h2>
                     <h6 className="float-left" style={{"margin-left": "30px", "margin-top": "7.5px"}}>
                         Interior: {this.props.interior} %
                     </h6>

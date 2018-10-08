@@ -10,7 +10,7 @@ class LightSensor extends Component {
                     <div className="circle">
                         <img className="logo" src={LightLogo}/>
                     </div>
-                    <h2 className="title float-left">Luz</h2>
+                    <h2 className="title float-left">Light</h2>
                     <h6 className="stats float-left">Interior: {this.props.interior} Lux</h6>
                     <h6 className="stats float-left">Exterior: 14</h6>
                 </div>

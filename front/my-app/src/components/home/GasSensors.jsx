@@ -8,13 +8,13 @@ class GasSensors extends Component {
         return (
             <div className="container-fluid">
                 <div className="row" style={{"margin-left": "70px"}}>
-                    <SmokeSensor interior={this.props.smoke}/>
+                    <SmokeSensor interior={this.props.smoke} acceptable={this.props.smoke_acceptable}/>
                 </div>
                 <div className="row" style={{"margin-left": "35px"}}>
-                    <COSensor interior={this.props.co}/>
+                    <COSensor interior={this.props.co} acceptable={this.props.co_acceptable}/>
                 </div>
                 <div className="row">
-                    <LPGSensor interior={this.props.lpg}/>
+                    <LPGSensor interior={this.props.lpg} acceptable={this.props.lpg_acceptable}/>
                 </div>
             </div>
         )

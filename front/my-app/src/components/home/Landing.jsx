@@ -93,8 +93,10 @@ class Landing extends Component {
                         <VariedSensors
                             temp_int={this.state.response["temperature"][0]}
                             temp_ext={this.state.response["current_temp"]}
+                            temp_acceptable={this.state.response["temperature"][1] === 0}
                             hum_int={this.state.response["humidity"][0]}
                             hum_ext={this.state.response["current_hum"]}
+                            hum_acceptable={this.state.response["humidity"][1] === 0}
                             pressure_ext={this.state.response["pressure"]}
                             tempMax={this.state.preferences["temp_max"]}
                             tempMin={this.state.preferences["temp_min"]}
@@ -108,8 +110,11 @@ class Landing extends Component {
                     <div className="col-5">
                         <GasSensors
                             lpg={this.state.response["LPG"][0]}
+                            lpg_acceptable={this.state.response["LPG"][1] === 0}
                             co={this.state.response["CO"][0]}
+                            co_acceptable={this.state.response["CO"][1] === 0}
                             smoke={this.state.response["smoke"][0]}
+                            smoke_acceptable={this.state.response["smoke"][1] === 0}
                         />
                     </div>
                 </div>

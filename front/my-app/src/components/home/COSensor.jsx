@@ -5,7 +5,8 @@ class COSensor extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <div className="row rectangle">
+                <div
+                    className={(this.props.acceptable ? "" : "blink") + " row rectangle"}>
                     <div className="circle">
                         <img className="logo" src={COLogo}/>
                     </div>

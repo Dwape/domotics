@@ -6,11 +6,11 @@ class TemperatureSensor extends Component {
         return (
             <div className="container-fluid">
                 <div
-                    className={(this.props.isOk(this.props.interior, this.props.min, this.props.max) ? "" : "blink") + " row rectangle"}>
+                    className={(this.props.acceptable ? "" : "blink") + " row rectangle"}>
                     <div className="circle">
                         <img className="logo" src={TemperatureLogo}/>
                     </div>
-                    <h2 className="title float-left">Temperatura</h2>
+                    <h2 className="title float-left">Temperature</h2>
                     <h6 className="float-left" style={{"margin-left": "2.5px", "margin-top": "7.5px"}}>
                         Interior: {this.props.interior} ºC
                     </h6>
