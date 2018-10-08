@@ -28,10 +28,10 @@ hum_min = 5
 
 @app.route("/")
 def home():
-    session['temp_max'] = 28
-    session['temp_min'] = 22
-    session['hum_max'] = 50
-    session['hum_min'] = 5
+    #session['temp_max'] = 28
+    #session['temp_min'] = 22
+    #session['hum_max'] = 50
+    #session['hum_min'] = 5
     return "Welcome to domotics!"
 
 # The JSON returned has a list of two elements for all of the values measured.
