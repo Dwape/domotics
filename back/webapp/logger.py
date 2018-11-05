@@ -6,6 +6,11 @@ from arduinoSerial import get_gas_light
 #we need to check serial to see if it saves older values or if they are overwritten.
 #in case all values are saved, we should change the frequency in the arduino code.
 
+'''
+Logs values into the database.
+Sleeps so that measurements are saved every 30 seconds
+'''
+
 connect()
 
 previous_values = None

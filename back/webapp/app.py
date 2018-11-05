@@ -28,10 +28,9 @@ hum_min = float(5.0)
 
 @app.route("/")
 def home():
-    #session['temp_max'] = 28
-    #session['temp_min'] = 22
-    #session['hum_max'] = 50
-    #session['hum_min'] = 5
+    '''
+    Default route of the web application.
+    '''
     return "Welcome to domotics!"
 
 # The JSON returned has a list of two elements for all of the values measured.
@@ -41,6 +40,23 @@ def home():
 # If the values is 1, then the user should be told to ventilate his house.
 @app.route("/api/latest")
 def values():
+    '''
+    Returns a response with the latest values in the database as a json.
+
+    A json returned sent to this method would look like this:
+    {
+        "datetime": "2008-11-11 13:23:44",
+        "humidity": [45, 0],
+        "temperature": [24, -1],
+        "LPG": [0, 0],
+        "CO": [0, 0],
+        "smoke": [0, 0],
+        "light": [255, 0],
+        "current_hum": 23,
+        "current_temp": 26,
+        "pressure": 100
+    }
+    '''
     #connect()
     weather = get_weather_values(city)
     values = get_latest_values()
@@ -57,6 +73,17 @@ def values():
 
 @app.route("/api/changePreferences", methods=['POST'])
 def changePreferences():
+    '''
+    Changes the preferences for a user.
+
+    A json returned sent to this method would look like this:
+    {
+        "temp_max": "28",
+        "temp_min": "25",
+        "hum_max": "70",
+        "hum_min": "30"
+    }
+    '''
     if request.method == 'POST':
         # Check if it gets the json correctly.
         json = request.get_json()
@@ -71,6 +98,17 @@ def changePreferences():
 
 @app.route("/api/getPreferences")
 def getPreferences():
+    '''
+    Returns a json with the current user preferences.
+
+    A json returned sent to this method would look like this:
+    {
+        "temp_max": "28",
+        "temp_min": "25",
+        "hum_max": "70",
+        "hum_min": "30"
+    }
+    '''
     if 'temp_max' in session:
         result = parsePreferences(session['temp_max'], session['temp_min'], session['hum_max'], session['hum_min'])
     else:
@@ -79,6 +117,39 @@ def getPreferences():
 
 @app.route("/api/valuesRange")
 def valuesRange():
+    '''
+    Returns values between to dates.
+
+    Two parameters are required in the url:
+    form: The starting date
+    to: The end date
+
+    The json returned from this method looks like this:
+    [{
+        "datetime": "2008-11-11 13:23:44",
+        "humidity": [45, 0],
+        "temperature": [24, -1],
+        "LPG": [0, 0],
+        "CO": [0, 0],
+        "smoke": [0, 0],
+        "light": [255, 0],
+        "current_hum": 23,
+        "current_temp": 26,
+        "pressure": 100
+    },
+    {
+        "datetime": "2008-11-11 13:23:44",
+        "humidity": [46, 0],
+        "temperature": [25, -1],
+        "LPG": [0, 0],
+        "CO": [0, 0],
+        "smoke": [0, 0],
+        "light": [234, 0],
+        "current_hum": 22,
+        "current_temp": 25,
+        "pressure": 97
+    }]
+    '''
     #connect()
     fromDate = request.args.get('from')
     toDate = request.args.get('to')
