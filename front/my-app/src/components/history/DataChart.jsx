@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 //import {Chart} from "frappe-charts";
 import { Chart } from 'frappe-charts/dist/frappe-charts.min.esm'
 import * as frappe from "frappe-charts";
+import '../../styleSheets/components/history/DataChart.css';
 
 class DataChart extends Component {
 
@@ -16,7 +17,7 @@ class DataChart extends Component {
 
     componentDidMount() {
         this.callApi()
-            .then(res => this.parseValue(res))
+            .then(res => this.createCharts(res))
             //.then(res => this.createChart())
             .catch(err => console.log(err));
     }
@@ -39,13 +40,25 @@ class DataChart extends Component {
             return 'Loading...'
         }
         */
+        //className="container-fluid form-centered"
+        /*
+        <div className="chart-container">
+                <div id="chart">
+                </div>
+            </div>
+         */
         return (
-            <div className="container-fluid form-centered" id="chart">
+            <div id={this.props.type + "-chart"}>
             </div>
         );
     }
 
-    parseValue(result) {
+    createCharts(result) {
+        this.createChart(this.parseValue(result, this.props.type), "#" + this.props.type + "-chart", this.props.title);
+    }
+
+    // results arrive in the inverse order, this can be changed here or in the backend.
+    parseValue(result, key) {
         //let labels = [result[0]["datetime"], result[1]["datetime"], result[2]["datetime"]];
         let labels = [];
         for (let i=0; i < result.length; i++) {
@@ -54,24 +67,24 @@ class DataChart extends Component {
 
         let values = [];
         for (let i=0; i < result.length; i++) {
-            values.push(result[i]["temperature"])
+            values.push(result[i][key])
         }
         let datasets = [
             {
-                name: "Temperature", type: "bar",
+                name: key, type: "bar",
                 values: values
             }
         ];
 
-        const data = {
+        return {
             labels,
             datasets
         };
 
-        this.createChart(data);
+        //this.createChart(data);
     }
 
-    createChart(data) {
+    createChart(data, id, title) {
 
         /*
         const data = {
@@ -87,9 +100,9 @@ class DataChart extends Component {
         };
         */
 
-        const chart = new Chart("#chart", {  // or a DOM element,
+        const chart = new Chart(id, {  // or a DOM element,
             // new Chart() in case of ES6 module with above usage
-            title: "Temperature history",
+            title: title,
             data: data,
             type: 'axis-mixed', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
             height: 250,

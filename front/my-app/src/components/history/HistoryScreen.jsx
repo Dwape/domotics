@@ -10,7 +10,14 @@ class HistoryScreen extends Component {
             <div className="bg-wrapper">
                 <div className="bg-full-screen">
                     <NavBar {...this.props}/>
-                    <DataChart/>
+                    <DataChart
+                        type={"temperature"}
+                        title={"Temperature History"}
+                    />
+                    <DataChart
+                        type={"humidity"}
+                        title={"Humidity History"}
+                    />
                 </div>
             </div>
         )
