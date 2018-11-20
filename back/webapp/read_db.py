@@ -60,7 +60,7 @@ def get_range_values(fromDate, toDate):
     A list with lists of six elements with all the values.
     The elements represent (in this order): humidity, temperature, LPG amount, CO amount, Smoke, light.
     '''
-	connect()
-	cur = db.cursor()
-	cur.execute("SELECT * FROM data WHERE (datetime > " + fromDate + " AND datetime < " + toDate + ") ORDER BY datetime DESC")
-	return cur.fetchall() # Check if the return value is correct or we need to remove the last value (like we do in get_latest_values())
+    connect()
+    cur = db.cursor()
+    cur.execute("SELECT * FROM data WHERE (datetime > " + fromDate + " AND datetime < " + toDate + ") ORDER BY datetime DESC")
+    return cur.fetchall() # Check if the return value is correct or we need to remove the last value (like we do in get_latest_values())
