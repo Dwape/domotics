@@ -8,22 +8,16 @@ class DataChart extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            data: undefined,
-            fromDate: '2017-11-11 12:00:00',
-            toDate: '2019-11-11 12:00:00'
-        };
     }
 
     componentDidMount() {
         this.callApi()
-            .then(res => this.createCharts(res))
-            //.then(res => this.createChart())
+            .then(res => this.createChart(res))
             .catch(err => console.log(err));
     }
 
     callApi = async () => {
-        const response = await fetch('http://' + process.env.REACT_APP_ARG + ':5000/api/valuesRange?from=\'' + this.state.fromDate + '\'&to=\'' + this.state.toDate + '\'', {
+        const response = await fetch('http://' + process.env.REACT_APP_ARG + ':5000/api/valuesRange?from=\'' + this.props.fromDate + '\'&to=\'' + this.props.toDate + '\'', {
             credentials: 'include'
         }); //the ip will change all the time
 
@@ -35,40 +29,47 @@ class DataChart extends Component {
     };
 
     render() {
-        /*
-        if (this.state.data === undefined) {
-            return 'Loading...'
-        }
-        */
-        //className="container-fluid form-centered"
-        /*
-        <div className="chart-container">
-                <div id="chart">
-                </div>
-            </div>
-         */
         return (
             <div id={this.props.type + "-chart"}>
             </div>
         );
     }
 
-    createCharts(result) {
-        this.createChart(this.parseValue(result, this.props.type), "#" + this.props.type + "-chart", this.props.title);
+    //result length must be bigger than 1 for the chart to work correctly.
+    createChart(result) {
+        const chart = new Chart("#" + this.props.type + "-chart", {  // or a DOM element,
+            // new Chart() in case of ES6 module with above usage
+            title: this.props.title,
+            data: this.parseValue(result, this.props.type),
+            type: 'axis-mixed', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
+            height: 250,
+            colors: ['#7cd6fd', '#743ee2']
+        })
     }
 
-    // results arrive in the inverse order, this can be changed here or in the backend.
     parseValue(result, key) {
-        //let labels = [result[0]["datetime"], result[1]["datetime"], result[2]["datetime"]];
-        let labels = [];
-        for (let i=0; i < result.length; i++) {
-            labels.push(result[i]["datetime"])
-        }
-
         let values = [];
-        for (let i=0; i < result.length; i++) {
-            values.push(result[i][key])
+        let labels = [];
+
+        let lastDate = this.parseDate(result[result.length-1]["datetime"]);
+        let accumulator = 0;
+        let total = 0;
+        for (let i=result.length-1; i >= 0; i--) {
+            let currentDate = this.parseDate(result[i]["datetime"]);
+            if (currentDate === lastDate) {
+                accumulator += result[i][key];
+                total++;
+            } else {
+                labels.push(lastDate);
+                values.push(accumulator/total);
+                lastDate = currentDate;
+                accumulator = result[i][key];
+                total = 1;
+            }
         }
+        labels.push(lastDate);
+        values.push(accumulator/total);
+
         let datasets = [
             {
                 name: key, type: "bar",
@@ -80,34 +81,23 @@ class DataChart extends Component {
             labels,
             datasets
         };
-
-        //this.createChart(data);
     }
 
-    createChart(data, id, title) {
-
-        /*
-        const data = {
-            labels: ["12am-3am", "3am-6pm", "6am-9am", "9am-12am",
-                "12pm-3pm", "3pm-6pm", "6pm-9pm", "9am-12am"
-            ],
-            datasets: [
-                {
-                    name: "Temperature", type: "bar",
-                    values: [25, 40, 30, 35, 8, 52, 17, -4]
-                }
-            ]
-        };
-        */
-
-        const chart = new Chart(id, {  // or a DOM element,
-            // new Chart() in case of ES6 module with above usage
-            title: title,
-            data: data,
-            type: 'axis-mixed', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
-            height: 250,
-            colors: ['#7cd6fd', '#743ee2']
-        })
+    parseDate(date) {
+        switch (this.props.timeGranularity) {
+            case "minute":
+                return date.slice(0, -3);
+            case "hour":
+                return date.slice(0, -6);
+            case "day":
+                return date.slice(0, -9);
+            case "month":
+                return date.slice(0, -12);
+            case "year":
+                return date.slice(0, -15);
+            default:
+                return date;
+        }
     }
 }
 
