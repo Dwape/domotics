@@ -14,6 +14,7 @@ from jsonparser import parsePreferences
 from weather import get_weather_values
 from valueChecker import check_values
 from read_db import get_range_values
+from logger2 import logValue
 
 app = Flask(__name__)
 
@@ -35,7 +36,7 @@ def home():
 
 # The JSON returned has a list of two elements for all of the values measured.
 # The first values is the actual measurement, in its corresponding unit
-# The sencond values can either be 0 or 1
+# The second values can either be 0 or 1
 # If the values is 0, then the measurement is within the acceptable range and no changes should be made
 # If the values is 1, then the user should be told to ventilate his house.
 @app.route("/api/latest")
@@ -127,24 +128,24 @@ def valuesRange():
     The json returned from this method looks like this:
     [{
         "datetime": "2008-11-11 13:23:44",
-        "humidity": 45,
-        "temperature": 24,
-        "LPG": 0,
-        "CO": 0,
-        "smoke": 0,
-        "light": 255,
+        "humidity": [45, 0],
+        "temperature": [24, -1],
+        "LPG": [0, 0],
+        "CO": [0, 0],
+        "smoke": [0, 0],
+        "light": [255, 0],
         "current_hum": 23,
         "current_temp": 26,
         "pressure": 100
     },
     {
         "datetime": "2008-11-11 13:23:44",
-        "humidity": 46,
-        "temperature": 25,
-        "LPG": 0,
-        "CO": 0,
-        "smoke": 0,
-        "light": 234,
+        "humidity": [46, 0],
+        "temperature": [25, -1],
+        "LPG": [0, 0],
+        "CO": [0, 0],
+        "smoke": [0, 0],
+        "light": [234, 0],
         "current_hum": 22,
         "current_temp": 25,
         "pressure": 97
@@ -156,6 +157,36 @@ def valuesRange():
     results = get_range_values(fromDate, toDate)
     return Response(parseList(results), mimetype='application/json')
     #return parseList(results)
+
+@app.route("/sensor/measurement", methods=['POST'])
+def saveValue():
+    '''
+    Saves the measurments sent from the sensors in the database.
+    Several measurments can be sent from a single sensor in a single message. This allows sensors that measure two things at once to work.
+    The format of the json should be the following:
+
+    [{
+        "type": "temperature",
+        "value": 24.5
+    },
+    {
+        "type": "humidity",
+        "value": 54.2
+    }]
+
+    Where "type" is what is being measured and "value" is the value of the measurement.
+
+    There are only 6 valid values for type, any other values will be ignored.
+    These values are "humidity", "temperature", "LPG", "CO", "smoke" and "light"
+
+    Please note that the types must be written exacly as shown above or the measurements will be ignored.
+    '''
+    if request.method == 'POST':
+        json = request.get_json()
+        for measurement in json:
+            logValue(measurement['type'], measurement['value'])
+    return "values saved"
+
 
 # We should check if the connect can be done here so that we don't have to connect to the database everytime we wish to request a value.
 if __name__ == "__main__":
