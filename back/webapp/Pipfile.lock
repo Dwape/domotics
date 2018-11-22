@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "18fb3950ebb0ac1a8b36b1410f737b23784c5d88edead215739750b191d04e10"
+            "sha256": "fd2246bd6e58227b1881ee15b968d1192a76de46b54011e83e816299c65c3361"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "2.7"
+            "python_version": "3.5"
         },
         "sources": [
             {
@@ -105,16 +105,6 @@
             ],
             "version": "==2.4.2"
         },
-        "enum34": {
-            "hashes": [
-                "sha256:2d81cbbe0e73112bdfe6ef8576f2238f2ba27dd0d55752a776c41d38b7da2850",
-                "sha256:644837f692e5f550741432dd3f223bbb9852018674981b1664e5dc339387588a",
-                "sha256:6bd0f6ad48ec2aa117d3d141940d484deccda84d4fcd884f5c3d93c23ecd8c79",
-                "sha256:8ad8c4783bf61ded74527bffb48ed9b54166685e4230386a9ed9b1279e2df5b1"
-            ],
-            "markers": "python_version < '3'",
-            "version": "==1.1.6"
-        },
         "flask": {
             "hashes": [
                 "sha256:2271c0070dbcb5275fad4a82e29f23ab92682dc45f9dfbc22c02ba9b9322ce48",
@@ -143,14 +133,6 @@
                 "sha256:684a38a6f903c1d71d6d5fac066b58d7768af4de2b832e426ec79c30daa94a16"
             ],
             "version": "==2.7"
-        },
-        "ipaddress": {
-            "hashes": [
-                "sha256:64b28eec5e78e7510698f6d4da08800a5c575caa4a286c93d651c5d3ff7b6794",
-                "sha256:b146c751ea45cad6188dd6cf2d9b757f6f4f8d6ffb96a023e6f2e26eea02a72c"
-            ],
-            "markers": "python_version < '3'",
-            "version": "==1.0.22"
         },
         "iso8601": {
             "hashes": [
@@ -209,7 +191,7 @@
         },
         "pycparser": {
             "hashes": [
-                "sha256:5d52baf8e2242735c6ac45b1f992c5f80dcfc538da52324b3a835931454ff83f"
+                "sha256:a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"
             ],
             "version": "==2.19"
         },
