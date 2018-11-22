@@ -1,5 +1,7 @@
 #!/usr/bin/python
-import MySQLdb
+#import MySQLdb
+import pymysql
+pymysql.install_as_MySQLdb()
 import datetime
 
 cur = None # Database cursor
@@ -12,7 +14,7 @@ def connect():
 
 	'''
 	global db
-	db = MySQLdb.connect(host="localhost",    # your host, usually localhost
+	db = pymysql.connect(host="localhost",    # your host, usually localhost
                      user="root",         # your username
                      passwd="tpintrocom",  # your password
                      db="domotics")        # name of the data base
