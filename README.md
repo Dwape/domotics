@@ -2,25 +2,35 @@
 
 ## Running
 
-### react app
+### React app
 
 Front end of the application
 
 ```REACT_APP_ARG="localhost" npm start``` if running the back end locally.
 
-```REACT_APP_ARG="[IP]" npm start``` where [IP] is the IP of the machine where the back end is running.
+```REACT_APP_ARG="[IP]" npm start``` where [IP] is the IP of the computer where the back end is running.
 
-### flask app
+### Flask app
 
 Back end of the application
 
 ```python app.py```
 
-### logger
+### Measurements
 
-Logs the values read by the sensors in a MySQL batabase
+Measurements are sent to the back end as a POST HTTP request to ```http://[IP]:5000/sensor/measurement``` where [IP] is the IP of the computer where the flask app is running.
 
-```python logger.py &``` to run as a background process
+The body of the request must be a Json with the following format:
+```
+[{
+  "type": "temperature",
+  "value": 24.5
+  },
+  {
+  "type": "humidity",
+  "value": 42
+  }]
+  ```
 
 #### Python dependencies
 
