@@ -35,26 +35,26 @@ def check_values(values, weather, tempMax, tempMin, humMax, humMin):
 
 """
     warning = [0,0,0,0,0,0]
-	#humidity
+    #humidity
     if (float(values[0]) > float(humMax)) and (float(weather[0]) < float(values[0])):
-	   warning[0] = 1
+        warning[0] = 1
     elif (float(values[0]) < float(humMin)) and (float(weather[0]) > float(values[0])):
-	   warning[0] = -1
-	#temperature
+        warning[0] = -1
+    #temperature
     if (float(values[1]) > float(tempMax)) and (float(weather[1]) < float(values[1])):
         warning[1] = 1
     elif (float(values[1]) < float(tempMin)) and (float(weather[1]) > float(values[1])): 
         warning[1] = -1
-	#LPG amount
+    #LPG amount
     if float(values[2]) > 1000:
         warning[2]=1
-	#CO amount
+    #CO amount
     if float(values[3]) > 40:
         warning[3]=1
-	#Smoke
+    #Smoke
     if float(values[4]) > 1500:
         warning[4]=1
-	#light
+    #light
     if float(values[5]) > 1000:
         warning[5]=1
     return warning
