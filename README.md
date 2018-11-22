@@ -1,10 +1,10 @@
-# domotics
+# Domotics
 
 ## Running
 
 ### React app
 
-Front end of the application
+Front end of the application.
 
 ```REACT_APP_ARG="localhost" npm start``` if running the back end locally.
 
@@ -12,13 +12,25 @@ Front end of the application
 
 ### Flask app
 
-Back end of the application
+Back end of the application.
+Uses pipenv to manage dependencies.
 
-```python app.py```
+**Installing pipenv**
+
+```pip install pipenv```
+
+**Setting up pipenv**
+```
+cd webapp
+pipenv install
+```
+**Running the app**
+
+```pipenv run python app.py```
 
 ### Measurements
 
-Measurements are sent to the back end as a POST HTTP request to ```http://[IP]:5000/sensor/measurement``` where [IP] is the IP of the computer where the flask app is running.
+Measurements are sent to the back end as a HTTP POST request to ```http://[IP]:5000/sensor/measurement``` where [IP] is the IP of the computer where the flask app is running.
 
 The body of the request must be a Json with the following format:
 ```
