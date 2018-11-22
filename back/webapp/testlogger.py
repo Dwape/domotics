@@ -61,4 +61,4 @@ def save(values):
             'value': values[5]
         }
     ]
-    requests.post('http://localhost:5000/sensor/measurement', json=data) # do we need authentication?
+    requests.post('http://localhost:5000/sensor/measurement', json=data.encode('utf-8')) # do we need authentication?
