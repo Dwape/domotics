@@ -18,6 +18,7 @@ def connect():
                      user="root",         # your username
                      passwd="tpintrocom",  # your password
                      db="domotics")        # name of the data base
+	db.set_character_set('utf8')
 
 
 def close_connection():
@@ -39,6 +40,9 @@ def get_latest_values():
 	'''
 	connect()
 	cur = db.cursor()
+	cur.execute('SET NAMES utf8;')
+	cur.execute('SET CHARACTER SET utf8;')
+	cur.execute('SET character_set_connection=utf8;')
 	cur.execute("SELECT * FROM data ORDER BY datetime DESC LIMIT 1")
 	return cur.fetchall()[0]
 
@@ -64,5 +68,8 @@ def get_range_values(fromDate, toDate):
     '''
     connect()
     cur = db.cursor()
+    cur.execute('SET NAMES utf8;')
+	cur.execute('SET CHARACTER SET utf8;')
+	cur.execute('SET character_set_connection=utf8;')
     cur.execute("SELECT * FROM data WHERE (datetime > " + fromDate + " AND datetime < " + toDate + ") ORDER BY datetime DESC")
     return cur.fetchall() # Check if the return value is correct or we need to remove the last value (like we do in get_latest_values())
