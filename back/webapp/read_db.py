@@ -42,9 +42,11 @@ def get_latest_values():
     '''
     #connect()
     #cur = db.cursor()
-    result = cur.fetchall()[0]
+    #result = cur.fetchall()[0]
     #cur.close()
-    return result
+    result = cur.fetchall()
+    print(result) #REMOVE
+    return result[0]
 
 def get_range_values(fromDate, toDate):
     '''
