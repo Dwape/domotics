@@ -9,34 +9,34 @@ cur = None # Database cursor
 db = None # A reference to the database
 
 def connect():
-	'''
-	Connects to the database use to store sensore values.
+    '''
+    Connects to the database use to store sensore values.
 
-	'''
-	global db
-	db = pymysql.connect(host="localhost",    # your host, usually localhost
+    '''
+    global db
+    db = pymysql.connect(host="localhost",    # your host, usually localhost
                      user="root",         # your username
                      passwd="tpintrocom",  # your password
                      db="domotics")        # name of the data base
 
 
 def close_connection():
-	'''
-	Closes the connection to the database.
+    '''
+    Closes the connection to the database.
 
-	'''
-	db.close()
+    '''
+    db.close()
 
 def get_latest_values():
-	'''
-	Returns the latest values saved in the database.
+    '''
+    Returns the latest values saved in the database.
 
-	:return: str[]
+    :return: str[]
 
-	The latest values in the database
-	A list of six elements with all the values.
-	The elements represent (in this order): humidity, temperature, LPG amount, CO amount, Smoke, light.
-	'''
+    The latest values in the database
+    A list of six elements with all the values.
+    The elements represent (in this order): humidity, temperature, LPG amount, CO amount, Smoke, light.
+    '''
     connect()
     cur = db.cursor()
     result = cur.fetchall()[0]
