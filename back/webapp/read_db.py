@@ -70,6 +70,7 @@ def get_range_values(fromDate, toDate):
     '''
     #connect()
     #cur = db.cursor()
+    cur.execute("SELECT * FROM data")
     result = cur.fetchall()
     #cur.close()
     return result # Check if the return value is correct or we need to remove the last value (like we do in get_latest_values())
