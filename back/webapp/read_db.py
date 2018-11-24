@@ -44,7 +44,7 @@ def get_latest_values():
     #cur = db.cursor()
     #result = cur.fetchall()[0]
     #cur.close()
-    cur.execute("SELECT * FROM data") # This for some reason fixes the cursor problem
+    cur.execute("SELECT * FROM data ORDER BY datetime DESC") # This for some reason fixes the cursor problem
     result = cur.fetchall()[0]
     return result
 
@@ -70,7 +70,7 @@ def get_range_values(fromDate, toDate):
     '''
     #connect()
     #cur = db.cursor()
-    cur.execute("SELECT * FROM data")
+    cur.execute("SELECT * FROM data ORDER BY datetime DESC")
     result = cur.fetchall()
     #cur.close()
     return result # Check if the return value is correct or we need to remove the last value (like we do in get_latest_values())
