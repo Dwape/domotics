@@ -20,6 +20,7 @@ def connect():
                      db="domotics")        # name of the data base
     global cur
     cur = db.cursor()
+    cur.execute()
 
 
 def close_connection():
