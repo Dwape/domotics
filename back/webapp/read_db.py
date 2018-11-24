@@ -71,14 +71,13 @@ def get_range_values(fromDate, toDate):
     #cur.close()
     return result # Check if the return value is correct or we need to remove the last value (like we do in get_latest_values())
 
-    def save_values(values):
+def save_values(values):
     '''
     Saves the values passed as function parameter to the database
 
     :param values: str[]
         A list of six elements with all the values to be saved.
         The elements represent (in this order): humidity, temperature, LPG amount, CO amount, Smoke, light.
-
     '''
     cur.execute("INSERT INTO data VALUES (%s, %s, %s, %s, %s, %s, %s)", (datetime.datetime.now(), values[0], values[1], values[2], values[3] ,values[4], values[5]))
     db.commit()
