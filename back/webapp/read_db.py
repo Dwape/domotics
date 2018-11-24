@@ -37,11 +37,11 @@ def get_latest_values():
 	A list of six elements with all the values.
 	The elements represent (in this order): humidity, temperature, LPG amount, CO amount, Smoke, light.
 	'''
-	connect()
-	cur = db.cursor()
+    connect()
+    cur = db.cursor()
     result = cur.fetchall()[0]
     cur.close()
-	return result
+    return result
 
 def get_range_values(fromDate, toDate):
     '''
