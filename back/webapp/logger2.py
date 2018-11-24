@@ -1,6 +1,7 @@
-from write_db import *
+#from write_db import *
+from read_db import *
 
-connect()
+#connect()
 
 measurements = [None] * 6
 #saved = 0
