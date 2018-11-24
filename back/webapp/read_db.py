@@ -20,7 +20,7 @@ def connect():
                      db="domotics")        # name of the data base
     global cur
     cur = db.cursor()
-    cur.execute()
+    cur.execute("SELECT * FROM data")
 
 
 def close_connection():
