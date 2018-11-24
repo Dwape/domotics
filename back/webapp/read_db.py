@@ -39,7 +39,9 @@ def get_latest_values():
 	'''
 	connect()
 	cur = db.cursor()
-	return cur.fetchall()[0]
+    result = cur.fetchall()[0]
+    cur.close()
+	return result
 
 def get_range_values(fromDate, toDate):
     '''
@@ -63,4 +65,6 @@ def get_range_values(fromDate, toDate):
     '''
     connect()
     cur = db.cursor()
-    return cur.fetchall() # Check if the return value is correct or we need to remove the last value (like we do in get_latest_values())
+    result = cur.fetchall()
+    cur.close()
+    return result # Check if the return value is correct or we need to remove the last value (like we do in get_latest_values())
