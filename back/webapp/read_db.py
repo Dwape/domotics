@@ -44,9 +44,7 @@ def get_latest_values():
     #cur = db.cursor()
     #result = cur.fetchall()[0]
     #cur.close()
-
-    test = cur.execute("SELECT * FROM data")
-    print(test)
+    cur.execute("SELECT * FROM data") # This for some reason fixes the cursor problem
     result = cur.fetchall()[0]
     return result
 
