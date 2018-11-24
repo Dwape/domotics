@@ -44,7 +44,9 @@ def get_latest_values():
     #cur = db.cursor()
     #result = cur.fetchall()[0]
     #cur.close()
-    global cur
+
+    test = cur.execute("SELECT * FROM data")
+    print(test)
     result = cur.fetchall()[0]
     return result
 
@@ -70,7 +72,6 @@ def get_range_values(fromDate, toDate):
     '''
     #connect()
     #cur = db.cursor()
-    global cur
     result = cur.fetchall()
     #cur.close()
     return result # Check if the return value is correct or we need to remove the last value (like we do in get_latest_values())
@@ -83,6 +84,5 @@ def save_values(values):
         A list of six elements with all the values to be saved.
         The elements represent (in this order): humidity, temperature, LPG amount, CO amount, Smoke, light.
     '''
-    global cur
     cur.execute("INSERT INTO data VALUES (%s, %s, %s, %s, %s, %s, %s)", (datetime.datetime.now(), values[0], values[1], values[2], values[3] ,values[4], values[5]))
     db.commit()
