@@ -63,5 +63,5 @@ The body of the request must be a Json with the following format:
   }]
   ```
   
-After being received, measurements are temporarily stored in a buffer. When a measurement arrives of a type for which there already is a measurement in the buffer, all the values in the buffer are stored in the database and the buffer is emptied. This allows values to be saved even if one or more sensors are unresponsive and therefore not sending data.
+After being received, measurements are temporarily stored in a buffer. When a measurement arrives of a type for which there already is a measurement in the buffer, all the values in the buffer are stored in the database and the buffer is emptied. This allows values to be saved even if one or more sensors are unresponsive and therefore not sending data.  
 Note that this behavior can cause NULL values to be saved in the database.
