@@ -44,8 +44,7 @@ A list of the dependencies is included in case a problem is encountered with one
 [flask_cors](https://flask-cors.readthedocs.io/en/latest/)  
 [requests](http://docs.python-requests.org/en/master/)  
 [serial](https://pythonhosted.org/pyserial/)  
-[Adafruit_DHT](https://github.com/adafruit/Adafruit_Python_DHT)  
-[MySQLdb](https://mysqlclient.readthedocs.io/user_guide.html#mysqldb)  
+[Adafruit_DHT](https://github.com/adafruit/Adafruit_Python_DHT)   
 [PyMySQL](https://github.com/PyMySQL/PyMySQL)
 
 ## Measurements
@@ -63,3 +62,6 @@ The body of the request must be a Json with the following format:
   "value": 42
   }]
   ```
+  
+After being received, measurements are temporarily stored in a buffer. When a measurement arrives of a type for which there already is a measurement in the buffer, all the values in the buffer are stored in the database and the buffer is emptied. This allows values to be saved even if one or more sensors are unresponsive and therefore not sending data.
+Note that this behavior can cause NULL values to be saved in the database.
