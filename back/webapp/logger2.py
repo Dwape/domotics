@@ -40,9 +40,7 @@ def saveValue(index, value):
     '''
     if (measurements[index] != None):
         save_values(measurements)
-        print(measurements) #REMOVE
         reset()
-        print(measurements) #REMOVE
     measurements[index] = value
 
 
