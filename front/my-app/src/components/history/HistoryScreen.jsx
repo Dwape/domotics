@@ -14,19 +14,26 @@ class HistoryScreen extends Component {
                         type={"temperature"}
                         title={"Temperature History"}
                         fromDate={"2017-11-11 12:00:00"}
-                        toDate={"2019-11-11 12:00:00"}
+                        toDate={this.getDate()}
                         timeGranularity={"second"}
                     />
                     <DataChart
                         type={"humidity"}
                         title={"Humidity History"}
                         fromDate={"2017-11-11 12:00:00"}
-                        toDate={"2019-11-11 12:00:00"}
+                        toDate={this.getDate()}
                         timeGranularity={"second"}
                     />
                 </div>
             </div>
         )
+    }
+
+    getDate() {
+        const today = new Date();
+        const date = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
+        const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        return date + " " + time;
     }
 }
 
