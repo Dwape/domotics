@@ -103,7 +103,7 @@ void loop() {
 
   postRequest(parseData(temperature, humidity, LPG, smoke, CO, light));
 
-  delay(10000);
+  delay(30000);
 }
 
 String parseData(float temperature, float humidity, float LPG, float smoke, float CO, float light) {

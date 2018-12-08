@@ -13,16 +13,16 @@ class HistoryScreen extends Component {
                     <DataChart
                         type={"temperature"}
                         title={"Temperature History"}
-                        fromDate={"2017-11-11 12:00:00"}
+                        fromDate={this.getPreviousDate()}
                         toDate={this.getDate()}
-                        timeGranularity={"second"}
+                        timeGranularity={"minute"}
                     />
                     <DataChart
                         type={"humidity"}
                         title={"Humidity History"}
-                        fromDate={"2017-11-11 12:00:00"}
+                        fromDate={this.getPreviousDate()}
                         toDate={this.getDate()}
-                        timeGranularity={"second"}
+                        timeGranularity={"minute"}
                     />
                 </div>
             </div>
@@ -31,9 +31,25 @@ class HistoryScreen extends Component {
 
     getDate() {
         const today = new Date();
-        const date = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
-        const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        return date + " " + time;
+        today.setHours(today.getHours() -3);
+        //const date = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
+        //const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        //console.log(date);
+        //console.log(time);
+        //console.log(today.toISOString().slice(0, -5).replace("T", " "));
+        //return date + " " + time;
+        console.log(today.toISOString().slice(0, -5).replace("T", " ")); //REMOVE
+        return today.toISOString().slice(0, -5).replace("T", " ");
+    }
+
+    getPreviousDate() {
+        const today = new Date();
+        today.setHours(today.getHours() -3);
+        const previousDate = new Date(today);
+        previousDate.setMinutes(today.getMinutes() - 10);
+        console.log(previousDate.toISOString().slice(0, -5).replace("T", " ")); //REMOVE
+        return previousDate.toISOString().slice(0, -5).replace("T", " ");
+        //return new Date(today.valueOf() - 60000 * 10);
     }
 }
 
