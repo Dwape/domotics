@@ -74,7 +74,7 @@ def get_range_values(fromDate, toDate):
     #connect()
     #cur = db.cursor()
     cur = db.cursor()
-    cur.execute("SELECT * FROM data ORDER BY datetime DESC")
+    cur.execute("SELECT * FROM data WHERE (datetime > \'" + fromDate + "\' AND datetime < \'" + toDate +"\') ORDER BY datetime DESC")
     result = cur.fetchall()
     cur.close()
     #cur.close()
